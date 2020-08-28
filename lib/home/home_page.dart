@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../styles.dart';
 
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
       _isObsecure = !_isObsecure;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,12 +40,16 @@ class _HomePageState extends State<HomePage> {
                 "Login to your account",
                 style: secondaryBold,
               ),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Text(
                 'Please login to continue',
                 style: Theme.of(context).textTheme.subtitle,
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               TextFormField(
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.emailAddress,
@@ -71,8 +77,8 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         _isObsecure ? "Show" : "Hide",
                         style: Theme.of(context).textTheme.subtitle.copyWith(
-                          color: Theme.of(context).primaryColor,
-                        ),
+                              color: Theme.of(context).primaryColor,
+                            ),
                       ),
                     ),
                     splashColor: Colors.transparent,
@@ -80,6 +86,92 @@ class _HomePageState extends State<HomePage> {
                 ),
                 obscureText: _isObsecure,
               ),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Text("Forgot Password?",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.montserrat(color: Colors.black45)),
+              ),
+              SizedBox(height: 20.0),
+              SizedBox(
+                width: double.infinity,
+                child: RaisedButton(
+                  color: Color(0xFF5CC4BE),
+                  child: Container(
+                    width: 105,
+                    height: 46,
+                    child: Center(
+                      child: Text(
+                        'LOGIN',
+                        style: GoogleFonts.montserrat(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Text('OR', textAlign: TextAlign.center, style: GoogleFonts.montserrat(
+                    color: Colors.black45
+                ),),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: RaisedButton(
+                  color: Colors.white,
+                  child: Text(
+                    'Sign in with Google'
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: RaisedButton(
+                  child: Text(
+                      'Sign in with Facebook'
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+              ),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "New user? ",
+                      style: GoogleFonts.montserrat(
+                          color: Colors.blueAccent
+                      ),
+                    ),
+                    new Text(
+                      "Sign up now",
+                      style: GoogleFonts.montserrat(
+                          color: Colors.blueAccent,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              )
+
             ],
           ),
         ),
