@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:job_application/libraries/expansion_tile.dart';
+import 'package:share/share.dart';
 
 class CustomDrawer extends StatefulWidget {
   @override
@@ -178,18 +179,23 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              'Invite Friends',
-                              style: GoogleFonts.montserrat(
-                                fontSize: 16,
-                                color: Colors.white,
+                        child: InkWell(
+                          onTap: (){
+                            share(context);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                'Invite Friends',
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            Icon(Icons.share, color: Colors.white,)
-                          ],
+                              Icon(Icons.share, color: Colors.white,)
+                            ],
+                          ),
                         )),
                   ),
                   SizedBox(height: 15,),
@@ -217,5 +223,16 @@ class _CustomDrawerState extends State<CustomDrawer> {
             )),
       ),
     );
+  }
+  String text =
+      'Hey, I want share with you the vacncies posted that might match your expertise. You should check it out too! Visit www.JobPlanet.com';
+
+  String subject = 'JobPlanet';
+
+  share(BuildContext context) {
+    final RenderBox box = context.findRenderObject();
+    Share.share(text,
+        subject: subject,
+        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
   }
 }
