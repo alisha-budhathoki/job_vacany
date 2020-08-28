@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:job_application/home/your_job_fragment.dart';
 
-import '../styles.dart';
+import 'custom_drawer.dart';
+import 'home_fragment.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,173 +11,122 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _formKey = GlobalKey<FormState>();
-  final FocusNode passwordField = FocusNode();
-  bool _isObsecure = true;
-  void _changeObsecure() {
-    setState(() {
-      _isObsecure = !_isObsecure;
-    });
+  int _currentIndex = 0;
+  final List<int> _backstack = [0];
+  List<Widget> _fragments = [HomeScreen(), YourJobScreen()];
+
+
+  Widget getTopMenu(int index, String textValue) {
+    if (_currentIndex != index) {
+      return Text(
+        textValue,
+        style: TextStyle(
+            color: Colors.black, fontSize: 15, fontWeight: FontWeight.w300),
+      );
+    }
+    return Container(
+      padding: EdgeInsets.only(
+        bottom: 3, // space between underline and text
+      ),
+      decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(
+            color: Colors.green[700], // Underline colour here
+            width: 2.0, // Underline width
+          ))
+      ),
+
+      child: Text(
+        textValue,
+        style: TextStyle(
+          color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: BackButton(
-          color: Colors.black,
+        elevation: 15,
+        backgroundColor: Colors.grey.shade50,
+        iconTheme: IconThemeData(
+          color: Theme
+              .of(context)
+              .primaryColorDark,
         ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Login to your account",
-                style: secondaryBold,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            InkWell(
+              onTap: () {},
+              child: Align(
+                alignment: Alignment.centerLeft,
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                'Please login to continue',
-                style: Theme.of(context).textTheme.subtitle,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              TextFormField(
-                textInputAction: TextInputAction.next,
-                keyboardType: TextInputType.emailAddress,
-                style: Theme.of(context).textTheme.subtitle,
-                decoration: InputDecoration(
-                  labelText: "Email address",
-                  labelStyle: Theme.of(context).textTheme.subtitle,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                style: Theme.of(context).textTheme.subtitle,
-                focusNode: passwordField,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  labelStyle: Theme.of(context).textTheme.subtitle,
-                  suffixIcon: new InkWell(
-                    onTap: _changeObsecure,
-                    highlightColor: Colors.transparent,
-                    child: new Container(
-                      width: 0,
-                      alignment: Alignment.center,
-                      child: Text(
-                        _isObsecure ? "Show" : "Hide",
-                        style: Theme.of(context).textTheme.subtitle.copyWith(
-                              color: Theme.of(context).primaryColor,
-                            ),
-                      ),
-                    ),
-                    splashColor: Colors.transparent,
-                  ),
-                ),
-                obscureText: _isObsecure,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Text("Forgot Password?",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.montserrat(color: Colors.black45)),
-              ),
-              SizedBox(height: 20.0),
-              SizedBox(
-                width: double.infinity,
-                child: RaisedButton(
-                  color: Color(0xFF5CC4BE),
-                  child: Container(
-                    width: 105,
-                    height: 46,
-                    child: Center(
-                      child: Text(
-                        'LOGIN',
-                        style: GoogleFonts.montserrat(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Text('OR', textAlign: TextAlign.center, style: GoogleFonts.montserrat(
-                    color: Colors.black45
-                ),),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: RaisedButton(
-                  color: Colors.white,
+              focusColor: Colors.black,
+              highlightColor: Colors.black,
+            ),
+            SizedBox(),
+            InkWell(
+              onTap: () {
+                _currentIndex = 0;
+                navigateTo(_currentIndex);
+              },
+              child: getTopMenu(0, 'Home'),
+            ),
+            Text('       '),
+            InkWell(
+              onTap: () {
+                _currentIndex = 1;
+                navigateTo(_currentIndex);
+              },
+              child: getTopMenu(1, 'Your Jobs'),
+            ),
+            Text('     '),
+            Container(
+              height: 27,
+              child: RaisedButton(color: Color(0xFFfcc892),
+                onPressed: () async {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+//                        builder: (context) => GettingStartedScreen(),
+                      ));
+                },
+                child: Center(
                   child: Text(
-                    'Sign in with Google'
-                  ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: RaisedButton(
-                  child: Text(
-                      'Sign in with Facebook'
-                  ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                ),
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "New user? ",
-                      style: GoogleFonts.montserrat(
-                          color: Colors.blueAccent
-                      ),
+                    'UPGRADE',
+                    style: TextStyle(
+                        color: Color(0xFF33691E),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12
                     ),
-                    new Text(
-                      "Sign up now",
-                      style: GoogleFonts.montserrat(
-                          color: Colors.blueAccent,
-                          fontWeight: FontWeight.bold
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              )
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)
+                ),
 
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: _fragments[_currentIndex],
+          ),
+        ],
+      ),
+        drawer: CustomDrawer(),
     );
+  }
+
+  void navigateTo(int index) {
+    _backstack.add(index);
+    setState(() {
+      _currentIndex = index;
+    });
   }
 }
