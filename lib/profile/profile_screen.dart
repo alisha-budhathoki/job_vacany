@@ -17,9 +17,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Column(
+      body: Stack(
         children: <Widget>[
-
+          Container(
+            height: double.infinity,
+            child: Column(
+              children: <Widget>[
+                Image.asset(
+                  'assets/images/user_img_register.png',
+                  width: double.infinity,
+                  height: 180,
+                  fit: BoxFit.fill,
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 305,
+            child: Container( color: Colors.black87, child: Column(
+              children: <Widget>[
+                Text('asja'),
+              ],
+            )),
+          )
         ],
       ),
     );
