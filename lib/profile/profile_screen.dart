@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_application/common/app_card.dart';
+import 'package:job_application/common/app_text_field.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -17,30 +19,60 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            height: double.infinity,
-            child: Column(
+      body: Container(
+        color: Colors.red,
+        child: Column(
+          children: <Widget>[
+            Stack(
               children: <Widget>[
                 Image.asset(
                   'assets/images/user_img_register.png',
                   width: double.infinity,
-                  height: 180,
+                  height: 500,
                   fit: BoxFit.fill,
                 ),
+            Positioned(
+              top: 120,
+                left: 10,
+                right: 10,
+                child:Container(
+                  height: 200,
+                  width: 390,
+                  child: Card(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 10,),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Container(height: 70, width: 70,child: Card(child: Text('dsad'))),
+                              RaisedButton(
+                                onPressed: (){
+                                },
+                                color: Colors.yellow,
+                                child: Text(
+                                  'Choose'
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        AppTextField(
+                          hintText: 'dsa',
+                        )
+                      ],
+                    ),
+
+                  ),
+                ),
+            ),
+                TextFormField()
               ],
             ),
-          ),
-          Positioned(
-            top: 305,
-            child: Container( color: Colors.black87, child: Column(
-              children: <Widget>[
-                Text('asja'),
-              ],
-            )),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
