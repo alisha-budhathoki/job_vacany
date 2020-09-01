@@ -54,15 +54,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 Container(
                                     height: 70,
                                     width: 70,
-                                    child: Card(child: Text('dsad'))),
+                                    child: Container(child: Image.asset('assets/images/pdf.png'))),
                                 RaisedButton(
                                   onPressed: () {},
-                                  color: Colors.yellow,
+                                  color: Colors.white70,
                                   child: Text('Choose'),
                                 )
                               ],
                             ),
                           ),
+                          SizedBox(height: 10,),
                           AppTextField(
                             hintText: 'Full name',
                           ),

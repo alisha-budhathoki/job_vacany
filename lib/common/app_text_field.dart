@@ -13,23 +13,26 @@ class _AppTextFieldState extends State<AppTextField> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        TextFormField(
-            decoration: InputDecoration(
-              fillColor: Colors.white,
-              filled: true,
-              hintText: widget.hintText??"FULL NAME", hintStyle: GoogleFonts.montserrat(),
-              labelStyle: TextStyle(
-                color: Colors.black87,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+          child: TextFormField(
+              decoration: InputDecoration(
+                fillColor: Colors.white,
+                filled: true,
+                hintText: widget.hintText??"FULL NAME", hintStyle: GoogleFonts.montserrat(),
+                labelStyle: TextStyle(
+                  color: Colors.black87,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: new BorderSide(color: Colors.black12),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10)),
               ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: new BorderSide(color: Color(0xfff1f0ec)),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10)),
-            ),
+          ),
         )
       ],
     );
