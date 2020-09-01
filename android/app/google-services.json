@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "667393764164",
+    "firebase_url": "https://jobapplication-1ff8b.firebaseio.com",
+    "project_id": "jobapplication-1ff8b",
+    "storage_bucket": "jobapplication-1ff8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667393764164:android:d89f072cec517bca0ac511",
+        "android_client_info": {
+          "package_name": "com.kumari.job_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667393764164-dcc91r4492rrhr076c540uebp0fkbqgr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kumari.job_application",
+            "certificate_hash": "4ec6422c415c40d890e71518002716001d441149"
+          }
+        },
+        {
+          "client_id": "667393764164-uq8ld7m9nnlmjlfc46b9hnqghti434eq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMYmXvH-uUfnCH1d4pTcRYCQcfELVSodg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667393764164-uq8ld7m9nnlmjlfc46b9hnqghti434eq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

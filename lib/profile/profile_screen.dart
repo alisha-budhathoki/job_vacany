@@ -20,7 +20,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         elevation: 0,
       ),
       body: Container(
-        color: Colors.red,
+        color: Colors.grey,
         child: Column(
           children: <Widget>[
             Stack(
@@ -31,46 +31,65 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: 500,
                   fit: BoxFit.fill,
                 ),
-            Positioned(
-              top: 120,
-                left: 10,
-                right: 10,
-                child:Container(
-                  height: 200,
-                  width: 390,
-                  child: Card(
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(height: 10,),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Container(height: 70, width: 70,child: Card(child: Text('dsad'))),
-                              RaisedButton(
-                                onPressed: (){
-                                },
-                                color: Colors.yellow,
-                                child: Text(
-                                  'Choose'
-                                ),
-                              )
-                            ],
+                Positioned(
+                  top: 100,
+                  left: 10,
+                  right: 10,
+                  child: Container(
+                    height: 480,
+                    width: 390,
+                    child: Card(
+                      color: Colors.blueGrey,
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 10,
                           ),
-                        ),
-                        AppTextField(
-                          hintText: 'dsa',
-                        )
-                      ],
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Container(
+                                    height: 70,
+                                    width: 70,
+                                    child: Card(child: Text('dsad'))),
+                                RaisedButton(
+                                  onPressed: () {},
+                                  color: Colors.yellow,
+                                  child: Text('Choose'),
+                                )
+                              ],
+                            ),
+                          ),
+                          AppTextField(
+                            hintText: 'Full name',
+                          ),
+                          AppTextField(
+                            hintText: 'Country',
+                          ),
+                          AppTextField(
+                            hintText: 'E-mail',
+                          ),
+                          AppTextField(
+                            hintText: 'Phone number',
+                          ),
+                          RaisedButton(
+                            color: Colors.yellow,
+                            onPressed: () {},
+                            child: Text('Send'),
+                          )
+                        ],
+                      ),
                     ),
-
                   ),
                 ),
-            ),
-                TextFormField()
               ],
             ),
+            RaisedButton(onPressed: ()
+                {}
+                ,color: Colors.white,child: Text('asndsm'))
           ],
         ),
       ),
